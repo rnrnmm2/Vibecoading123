@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIBE PORTFOLIO OS | Technical Sophistication</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#323632",
+                    "on-secondary-container": "#003025",
+                    "on-primary-container": "#9aedcf",
+                    "on-tertiary-container": "#ffd3cc",
+                    "outline": "#88938d",
+                    "error-container": "#93000a",
+                    "surface-container-highest": "#323632",
+                    "bg-light": "#f3f1ec",
+                    "surface-dim": "#101411",
+                    "accent-warm-dark": "#785a28",
+                    "secondary-container": "#2ca284",
+                    "on-secondary-fixed": "#002018",
+                    "accent-warm": "#c48c3c",
+                    "on-secondary-fixed-variant": "#005140",
+                    "on-surface-variant": "#bec9c3",
+                    "error": "#ffb4ab",
+                    "on-primary": "#00382a",
+                    "secondary": "#6cdab9",
+                    "on-tertiary": "#581d15",
+                    "outline-variant": "#3f4944",
+                    "surface-bright": "#363a37",
+                    "surface-container": "#1d211d",
+                    "on-tertiary-fixed-variant": "#743329",
+                    "on-surface": "#e0e3de",
+                    "tertiary": "#ffb4a8",
+                    "primary-fixed-dim": "#84d6b9",
+                    "surface-container-lowest": "#0b0f0c",
+                    "on-primary-fixed": "#002117",
+                    "primary": "#84d6b9",
+                    "tertiary-container": "#954c41",
+                    "secondary-fixed": "#89f6d4",
+                    "on-secondary": "#00382b",
+                    "tertiary-fixed": "#ffdad4",
+                    "inverse-on-surface": "#2d312e",
+                    "primary-container": "#0f6e56",
+                    "on-tertiary-fixed": "#3b0804",
+                    "text-muted-light": "#5a635c",
+                    "text-muted-dark": "#9aa59e",
+                    "bg-dark": "#0d1110",
+                    "inverse-surface": "#e0e3de",
+                    "surface": "#101411",
+                    "primary-fixed": "#a0f3d4",
+                    "on-primary-fixed-variant": "#00513e",
+                    "secondary-fixed-dim": "#6cdab9",
+                    "tertiary-fixed-dim": "#ffb4a8",
+                    "surface-container-low": "#191d19",
+                    "inverse-primary": "#086b53",
+                    "surface-container-high": "#272b28",
+                    "on-background": "#e0e3de",
+                    "background": "#101411",
+                    "on-error": "#690005",
+                    "surface-tint": "#84d6b9",
+                    "on-error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1100px",
+                    "header-h": "72px",
+                    "gutter-grid": "1.5rem",
+                    "section-v-padding": "clamp(3.5rem, 8vh, 5.5rem)",
+                    "margin-page": "1.25rem"
+            },
+            "fontFamily": {
+                    "nav-link": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "hero-display": ["Syne"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "project-title": ["Syne"],
+                    "section-title": ["Syne"],
+                    "hero-display-mobile": ["Syne"]
+            },
+            "fontSize": {
+                    "nav-link": ["0.92rem", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-md": ["1rem", {"lineHeight": "1.65", "letterSpacing": "0", "fontWeight": "400"}],
+                    "hero-display": ["6.4rem", {"lineHeight": "0.95", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+                    "body-lg": ["1.2rem", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-caps": ["0.85rem", {"lineHeight": "1.2", "letterSpacing": "0.12em", "fontWeight": "600"}],
+                    "project-title": ["1.35rem", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "section-title": ["2.75rem", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "hero-display-mobile": ["3.2rem", {"lineHeight": "1.0", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #101411;
+            color: #e0e3de;
+            overflow-x: hidden;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Atmospheric Background */
+        .grid-overlay {
+            background-image: radial-gradient(#323632 0.5px, transparent 0.5px);
+            background-size: 32px 32px;
+            mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+        }
+
+        .hero-glow {
+            filter: blur(120px);
+            background: radial-gradient(circle at center, rgba(132, 214, 185, 0.15) 0%, transparent 70%);
+        }
+
+        .glass-card {
+            background: rgba(25, 29, 25, 0.4);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(136, 147, 141, 0.1);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(132, 214, 185, 0.3);
+            transform: translateY(-4px);
+            background: rgba(25, 29, 25, 0.6);
+        }
+
+        @keyframes stagger-fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-stagger > * {
+            opacity: 0;
+            animation: stagger-fade-in 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary selection:text-on-primary">
+<!-- Global Background Elements -->
+<div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+<div class="grid-overlay absolute inset-0 opacity-20"></div>
+<div class="hero-glow absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full opacity-40"></div>
+<div class="hero-glow absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] rounded-full opacity-30"></div>
+</div>
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center h-header-h px-gutter-grid max-w-container-max mx-auto">
+<a class="font-hero-display text-project-title font-bold text-on-surface dark:text-on-surface tracking-tighter" href="#">
+                VIBE PORTFOLIO OS
+            </a>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-nav-link text-nav-link text-primary font-bold border-b-2 border-primary pb-1" href="#projects">Projects</a>
+<a class="font-nav-link text-nav-link text-on-surface-variant/70 dark:text-on-surface-variant/70 hover:text-primary transition-colors duration-300" href="#stack">Stack</a>
+<a class="font-nav-link text-nav-link text-on-surface-variant/70 dark:text-on-surface-variant/70 hover:text-primary transition-colors duration-300" href="#about">About</a>
+<a class="font-nav-link text-nav-link text-on-surface-variant/70 dark:text-on-surface-variant/70 hover:text-primary transition-colors duration-300" href="#contact">Process</a>
+</div>
+<button class="bg-primary text-on-primary font-nav-link text-nav-link px-6 py-2.5 rounded-full active:scale-95 transition-transform">
+                Get in Touch
+            </button>
+</div>
+</nav>
+<main class="relative z-10 pt-header-h">
+<!-- Hero Section -->
+<section class="min-h-[870px] flex flex-col justify-center items-center text-center px-gutter-grid py-section-v-padding">
+<div class="max-w-container-max w-full">
+<h1 class="font-hero-display-mobile md:font-hero-display text-hero-display-mobile md:text-hero-display text-on-surface mb-6 animate-stagger">
+<span class="block">VIBE</span>
+<span class="block text-primary">CODING</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12 animate-stagger" style="animation-delay: 0.2s;">
+                    Engineering digital experiences where technical logic meets atmospheric minimalism. A structured approach to modern full-stack development.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-stagger" style="animation-delay: 0.4s;">
+<a class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold flex items-center gap-2 group hover:shadow-[0_0_30px_-5px_rgba(132,214,185,0.4)] transition-all" href="#projects">
+                        View Projects
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<a class="px-8 py-4 rounded-full border border-outline/30 font-bold hover:bg-surface-container transition-colors" href="#stack">
+                        Explore Stack
+                    </a>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="max-w-container-max mx-auto px-gutter-grid py-section-v-padding" id="projects">
+<div class="mb-16">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-2 block">Curation</span>
+<h2 class="font-section-title text-section-title">Featured Projects</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- TaskFlow -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A sleek and modern user interface of a productivity application named TaskFlow. The UI features a clean dashboard with glassmorphism elements, soft teal accent colors, and a dark theme. The composition is professional and technical, showing data visualizations and task lists in a structured grid layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChYqA8d6opJHvKf2kwLdFj3XKB-3XJvjJgHRWQ9GM9n6tWpEXlkHoQE_poB5OLRnoG7A7fOyXfJQU2XLEIW7kIaki7y4WXceXhsptjtST_lDwBAAZge5yPcnqE_mCcuqJTZVXSTj7SUyimw1NQOzd3k7sXSQR5q5kOx8S-0-U3FZ4KesRzkM_1iuYOGdl0PGfnRDmnuYDIvP_C6XqJUov75_iV7nFjAQy6MRjmqTdosCnjMbnUJRfi5A"/>
+<div class="absolute top-4 right-4 flex gap-2">
+<span class="bg-surface/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-primary">Web App</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-project-title text-project-title">TaskFlow</h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant/60">2023</span>
+</div>
+<p class="text-on-surface-variant mb-6 h-12 overflow-hidden">An intelligent productivity platform engineered for high-performance teams. Built with React and Node.js.</p>
+<dl class="space-y-3 mb-8">
+<div class="flex items-baseline gap-4">
+<dt class="font-label-caps text-label-caps text-on-surface-variant/40 w-24">Role</dt>
+<dd class="font-bold text-sm">Lead Developer</dd>
+</div>
+<div class="flex items-baseline gap-4">
+<dt class="font-label-caps text-label-caps text-on-surface-variant/40 w-24">Stack</dt>
+<dd class="text-sm">React, Tailwind, PostgreSQL</dd>
+</div>
+</dl>
+<div class="flex items-center gap-4 pt-4 border-t border-outline/10">
+<a class="text-primary text-sm font-bold flex items-center gap-1 hover:underline" href="#">Case Study <span class="material-symbols-outlined text-sm">north_east</span></a>
+<a class="text-on-surface-variant text-sm font-bold flex items-center gap-1 hover:text-on-surface" href="#">Live Demo</a>
+</div>
+</div>
+</div>
+<!-- Prompt Lab -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A high-tech workspace environment showcasing the Prompt Lab interface. The design uses neon primary accents against a deep charcoal background. Digital particles and code snippets float around a central AI prompt editor, creating an atmosphere of advanced technological research and development." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPI7-ObAqD9M9Bh28obvAzEEfmCw11loQRZEJDj_RbQX_1oJi_DVJQzu7qslx01Q5f_icCY-DV2YSgB-rlmBD7WBBXaejV5Qdph0Dk5MIxV3zgWyewYJTdStWQWHtvODoM7bX7oNWQchFYEE2BxxGbZp4QGLE1vZ5Sokv7Z1PTp2RZ2m3Y2tloRk_l-aTjwiY9EiD58jNUCY8EI-xKwDf8qHJde-WbfOO9VgFhNb9JbhdWvVC9h9CepA"/>
+<div class="absolute top-4 right-4 flex gap-2">
+<span class="bg-surface/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-primary">AI Tool</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-project-title text-project-title">Prompt Lab</h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant/60">2024</span>
+</div>
+<p class="text-on-surface-variant mb-6 h-12 overflow-hidden">A structured prompt engineering studio for LLM optimization and iterative design. Python and OpenAI API.</p>
+<dl class="space-y-3 mb-8">
+<div class="flex items-baseline gap-4">
+<dt class="font-label-caps text-label-caps text-on-surface-variant/40 w-24">Role</dt>
+<dd class="font-bold text-sm">Full Stack Engineer</dd>
+</div>
+<div class="flex items-baseline gap-4">
+<dt class="font-label-caps text-label-caps text-on-surface-variant/40 w-24">Stack</dt>
+<dd class="text-sm">Next.js, Python, Pinecone</dd>
+</div>
+</dl>
+<div class="flex items-center gap-4 pt-4 border-t border-outline/10">
+<a class="text-primary text-sm font-bold flex items-center gap-1 hover:underline" href="#">Case Study <span class="material-symbols-outlined text-sm">north_east</span></a>
+<a class="text-on-surface-variant text-sm font-bold flex items-center gap-1 hover:text-on-surface" href="#">Repository</a>
+</div>
+</div>
+</div>
+<!-- Portfolio OS (Full Width) -->
+<div class="glass-card rounded-xl overflow-hidden group md:col-span-2 flex flex-col md:flex-row">
+<div class="md:w-3/5 h-64 md:h-auto overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A futuristic web-based operating system UI for a portfolio, featuring a minimalist terminal, a project grid, and a technical navigation bar. The aesthetic is atmospheric with subtle blurs and sharp typography in a dark-mode palette, capturing the essence of 'Vibe Portfolio OS'." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYUCwxoAnAmOT1KcaaD5-_WpoIPY6XDeIPEYF4D8jfaFoPzrBjIRqzF-bvQBpFOneRvm12homU-KOAlesukphfwiuVjlLrCrYCG2VnoeGk2ZszwkebT6-hsgriJurdmeHlhKFcNALW_tIn41PQ7ybfVVVmUECadjLbHMn30uuYPMYmAAANW7bO4MviCay1-VbV3rInaNO9QeJyTyT7gpdKcyLyX7sWSrxtBOFI_RZKQ5qYI1TKxhkIgQ"/>
+</div>
+<div class="p-10 md:w-2/5 flex flex-col justify-center">
+<div class="mb-4">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-1 block">Internal System</span>
+<h3 class="font-project-title text-project-title text-3xl">Vibe Portfolio OS</h3>
+</div>
+<p class="text-on-surface-variant mb-8">A custom design system and component architecture for high-end creative portfolios. Engineered for precision and rapid deployment of atmospheric UIs.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-primary-container/20 text-primary px-3 py-1 rounded text-xs font-bold border border-primary/20">Tailwind CSS</span>
+<span class="bg-primary-container/20 text-primary px-3 py-1 rounded text-xs font-bold border border-primary/20">Canvas API</span>
+<span class="bg-primary-container/20 text-primary px-3 py-1 rounded text-xs font-bold border border-primary/20">Motion.js</span>
+</div>
+<a class="inline-flex items-center gap-2 font-bold text-primary group" href="#">
+                            Explore Blueprint
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-all">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Tech Stack Section -->
+<section class="bg-surface-container-low/50 py-section-v-padding mt-10 relative overflow-hidden" id="stack">
+<!-- Animated background for this section -->
+
+<div class="max-w-container-max mx-auto px-gutter-grid relative z-10">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div class="max-w-xl">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-2 block">Capabilities</span>
+<h2 class="font-section-title text-section-title">The Engineering Stack</h2>
+<p class="text-on-surface-variant mt-4">A curated collection of technologies and frameworks leveraged to build high-performance, aesthetically pleasing digital products.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Frontend -->
+<div class="glass-card p-6 rounded-xl">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">developer_mode_tv</span>
+</div>
+<h4 class="font-bold mb-4">Frontend</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">React</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">Next.js</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">Tailwind</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">Three.js</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">TypeScript</span>
+</div>
+</div>
+<!-- Backend -->
+<div class="glass-card p-6 rounded-xl">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">database</span>
+</div>
+<h4 class="font-bold mb-4">Backend</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">Node.js</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">Python</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">PostgreSQL</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">Redis</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">GraphQL</span>
+</div>
+</div>
+<!-- AI/Workflow -->
+<div class="glass-card p-6 rounded-xl">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<h4 class="font-bold mb-4">AI / Workflow</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">OpenAI</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">LangChain</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">Vector DBs</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">Prompting</span>
+</div>
+</div>
+<!-- Tools -->
+<div class="glass-card p-6 rounded-xl">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">architecture</span>
+</div>
+<h4 class="font-bold mb-4">Tools</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">Figma</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">Docker</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">AWS</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">Vercel</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-xs font-medium border border-outline/10">Git</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="max-w-container-max mx-auto px-gutter-grid py-section-v-padding" id="about">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+<div class="lg:col-span-5">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-2 block">Biography</span>
+<h2 class="font-section-title text-section-title mb-8">Technical Philosophy</h2>
+<p class="text-body-lg text-on-surface-variant mb-6">
+                        I believe that great software is a marriage of rigid technical discipline and fluid visual intuition. My work focuses on creating tools that feel as good as they function.
+                    </p>
+<p class="text-on-surface-variant">
+                        With over 5 years of experience in full-stack engineering, I have developed a keen eye for "Vibe Coding"—the art of creating digital environments that resonate with users on an emotional and functional level.
+                    </p>
+</div>
+<div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6">
+<div class="glass-card p-8 rounded-xl flex flex-col items-center text-center">
+<div class="text-primary text-4xl font-bold mb-4">01</div>
+<h5 class="font-bold mb-2">Focus</h5>
+<p class="text-sm text-on-surface-variant">Deep concentration on solving complex architectural problems with clean, scalable code.</p>
+</div>
+<div class="glass-card p-8 rounded-xl flex flex-col items-center text-center">
+<div class="text-primary text-4xl font-bold mb-4">02</div>
+<h5 class="font-bold mb-2">Approach</h5>
+<p class="text-sm text-on-surface-variant">Atmospheric design meets data-driven logic for a balanced digital product experience.</p>
+</div>
+<div class="glass-card p-8 rounded-xl flex flex-col items-center text-center">
+<div class="text-primary text-4xl font-bold mb-4">03</div>
+<h5 class="font-bold mb-2">Goal</h5>
+<p class="text-sm text-on-surface-variant">Engineering meaningful interactions that elevate the standard of the modern web.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="max-w-container-max mx-auto px-gutter-grid py-section-v-padding" id="contact">
+<div class="glass-card p-12 rounded-3xl relative overflow-hidden text-center">
+<div class="hero-glow absolute -top-1/2 -left-1/2 w-full h-full opacity-50"></div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<h2 class="font-section-title text-section-title mb-6">Let's Build the Future Together</h2>
+<p class="text-body-lg text-on-surface-variant mb-10">Currently open for selective collaborations and high-impact engineering roles.</p>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="flex items-center gap-3 bg-primary text-on-primary px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform" href="mailto:hello@vibeprotfolio.os">
+<span class="material-symbols-outlined">mail</span>
+                            Email Me
+                        </a>
+<div class="flex gap-4">
+<a class="w-14 h-14 rounded-full border border-outline/20 flex items-center justify-center hover:bg-surface-container transition-all group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">code</span>
+</a>
+<a class="w-14 h-14 rounded-full border border-outline/20 flex items-center justify-center hover:bg-surface-container transition-all group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">diversity_3</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-v-padding mt-20 bg-surface dark:bg-surface">
+<div class="max-w-container-max mx-auto px-gutter-grid flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+<div>
+<span class="font-hero-display text-body-lg font-extrabold text-on-surface block mb-2 uppercase">VIBE PORTFOLIO OS</span>
+<p class="font-body-md text-body-md text-text-muted-dark dark:text-text-muted-light max-w-sm">© 2024 VIBE PORTFOLIO OS. ALL RIGHTS RESERVED. ENGINEERED FOR PRECISION.</p>
+</div>
+<div class="flex gap-10">
+<div class="flex flex-col gap-3">
+<span class="font-label-caps text-label-caps text-primary/60 uppercase">Connect</span>
+<a class="font-body-md text-body-md text-text-muted-dark dark:text-text-muted-light hover:text-primary transition-all duration-300 hover:translate-x-1" href="#">LinkedIn</a>
+<a class="font-body-md text-body-md text-text-muted-dark dark:text-text-muted-light hover:text-primary transition-all duration-300 hover:translate-x-1" href="#">GitHub</a>
+<a class="font-body-md text-body-md text-text-muted-dark dark:text-text-muted-light hover:text-primary transition-all duration-300 hover:translate-x-1" href="#">Read.cv</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-caps text-label-caps text-primary/60 uppercase">Navigate</span>
+<a class="font-body-md text-body-md text-text-muted-dark dark:text-text-muted-light hover:text-primary transition-all duration-300 hover:translate-x-1" href="#projects">Projects</a>
+<a class="font-body-md text-body-md text-text-muted-dark dark:text-text-muted-light hover:text-primary transition-all duration-300 hover:translate-x-1" href="#stack">Stack</a>
+<a class="font-body-md text-body-md text-text-muted-dark dark:text-text-muted-light hover:text-primary transition-all duration-300 hover:translate-x-1" href="#about">Process</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-stagger > *, section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+            observer.observe(el);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>

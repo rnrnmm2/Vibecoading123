@@ -170,10 +170,75 @@ function initFooterYear() {
   if (year) year.textContent = String(new Date().getFullYear());
 }
 
+function initYoutubePlayer() {
+  const player = document.getElementById("ytPlayer");
+  const playBtn = document.getElementById("ytPlayBtn");
+  const embed = document.getElementById("ytEmbed");
+  if (!player || !playBtn || !embed) return;
+
+  const videoId = player.dataset.youtubeId || "nNG5TJVBD10";
+  const title = player.dataset.youtubeTitle || "YouTube 영상";
+  const watchUrl = `https://www.youtube.com/shorts/${encodeURIComponent(videoId)}`;
+
+  const buildEmbedUrl = () => {
+    const params = new URLSearchParams({
+      autoplay: "1",
+      mute: "0",
+      rel: "0",
+      modestbranding: "1",
+      playsinline: "1",
+    });
+
+    // http/https 에서는 origin을 넘겨 YouTube embed 검증(오류 153)을 통과시킴
+    if (window.location.protocol === "http:" || window.location.protocol === "https:") {
+      params.set("origin", window.location.origin);
+      params.set("widget_referrer", window.location.href);
+    }
+
+    return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?${params.toString()}`;
+  };
+
+  const startPlayback = () => {
+    if (player.classList.contains("is-playing")) return;
+
+    // file:// 로 열면 Referer가 없어 YouTube가 오류 153을 반환함 → 유튜브에서 재생
+    if (window.location.protocol === "file:") {
+      window.open(watchUrl, "_blank", "noopener");
+      return;
+    }
+
+    const iframe = document.createElement("iframe");
+    iframe.src = buildEmbedUrl();
+    iframe.title = title;
+    iframe.allow =
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.setAttribute("allowfullscreen", "");
+    iframe.setAttribute("frameborder", "0");
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.loading = "eager";
+
+    embed.hidden = false;
+    embed.replaceChildren(iframe);
+    player.classList.add("is-playing");
+    playBtn.hidden = true;
+  };
+
+  playBtn.addEventListener("click", startPlayback);
+  player.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      if (event.target === playBtn || event.target === player) {
+        event.preventDefault();
+        startPlayback();
+      }
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   renderProjects();
   renderStack();
   initFooterYear();
+  initYoutubePlayer();
   initReveal();
 });

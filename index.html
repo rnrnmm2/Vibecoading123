@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>VIBE PORTFOLIO — 바이브 코딩 프로젝트</title>
     <meta
       name="description"
@@ -30,7 +31,9 @@
       <a class="brand" href="#top">VIBE<span>.</span></a>
       <nav class="nav" aria-label="주요 메뉴">
         <a href="#projects">Projects</a>
+        <a href="#video">Video</a>
         <a href="#stack">Stack</a>
+        <a href="./daegu-food.html">대구 맛집</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -65,7 +68,7 @@
         </p>
         <div class="hero__actions reveal">
           <a class="btn btn--primary" href="#projects">프로젝트 보기</a>
-          <a class="btn btn--ghost" href="#contact">연락하기</a>
+          <a class="btn btn--ghost" href="./daegu-food.html">대구광역시 맛집</a>
         </div>
         <div class="hero__visual reveal" aria-hidden="true">
           <div class="hero__grid"></div>
@@ -80,6 +83,50 @@
           </p>
         </div>
         <ul class="project-list" id="projectList"></ul>
+      </section>
+
+      <section class="section" id="video">
+        <div class="section__head">
+          <h2 class="section__title reveal">Video</h2>
+          <p class="section__desc reveal">
+            재생 버튼을 누르면 YouTube Shorts가 재생됩니다.
+          </p>
+        </div>
+
+        <div
+          class="yt-player reveal"
+          id="ytPlayer"
+          data-youtube-id="nNG5TJVBD10"
+          data-youtube-title="YouTube Shorts 영상"
+        >
+          <video
+            class="yt-player__video"
+            id="ytPosterVideo"
+            poster="https://i.ytimg.com/vi/nNG5TJVBD10/hqdefault.jpg"
+            preload="none"
+            playsinline
+            aria-label="YouTube 영상 미리보기"
+          ></video>
+
+          <button
+            type="button"
+            class="yt-player__play"
+            id="ytPlayBtn"
+            aria-label="YouTube 영상 재생"
+          >
+            <span class="yt-player__play-icon" aria-hidden="true">
+              <svg viewBox="0 0 68 48" width="68" height="48">
+                <path
+                  class="yt-player__play-bg"
+                  d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.5C4 2.3 2.3 4.8 1.5 7.7 0 13.1 0 24 0 24s0 10.9 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.5c2.9-.8 4.6-3.3 5.4-6.2C68 34.9 68 24 68 24s0-10.9-1.5-16.3z"
+                />
+                <path class="yt-player__play-triangle" d="M45 24L27 14v20" fill="#fff" />
+              </svg>
+            </span>
+          </button>
+
+          <div class="yt-player__embed" id="ytEmbed" hidden></div>
+        </div>
       </section>
 
       <section class="section" id="stack">
@@ -135,6 +182,739 @@
       <p>© <span id="year"></span> VIBE Portfolio. Built for job & career move.</p>
     </footer>
 
+    <!-- 플로팅 도구: 이미지 생성 + 챗봇 -->
+    <div class="float-tools" id="floatTools">
+      <!-- 이미지 생성 봇 -->
+      <div class="imagebot" id="imagebot">
+        <button
+          type="button"
+          class="imagebot__fab"
+          id="imagebotToggle"
+          aria-expanded="false"
+          aria-controls="imagebotPanel"
+          aria-label="이미지 생성 열기"
+        >
+          <svg class="imagebot__fab-icon imagebot__fab-icon--image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <rect x="3.5" y="5" width="17" height="14" rx="2.5" />
+            <circle cx="9" cy="10" r="1.6" />
+            <path d="M3.8 16.5l4.4-4.2 3.2 3 3.1-3.6 5.5 4.8" />
+          </svg>
+          <svg class="imagebot__fab-icon imagebot__fab-icon--close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+
+        <section
+          class="imagebot__panel"
+          id="imagebotPanel"
+          role="dialog"
+          aria-labelledby="imagebotTitle"
+          aria-hidden="true"
+          hidden
+        >
+          <header class="imagebot__header">
+            <div>
+              <h2 class="imagebot__title" id="imagebotTitle">VIBE Image</h2>
+              <p class="imagebot__subtitle">프롬프트로 이미지를 생성하세요</p>
+            </div>
+            <button type="button" class="imagebot__icon-btn" id="imagebotClose" aria-label="이미지 생성 닫기" title="닫기">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            </button>
+          </header>
+
+          <form class="imagebot__form" id="imagebotForm">
+            <label class="imagebot__label" for="imagebotPrompt">프롬프트</label>
+            <textarea
+              id="imagebotPrompt"
+              class="imagebot__textarea"
+              rows="4"
+              placeholder="예: 석양이 지는 고요한 산속 호수를 수채화 스타일로, 부드러운 색감, 글자 없음"
+              maxlength="4000"
+              required
+            ></textarea>
+            <div class="imagebot__actions">
+              <button type="submit" class="imagebot__generate" id="imagebotGenerate">이미지 생성</button>
+            </div>
+            <p class="imagebot__status" id="imagebotStatus" aria-live="polite"></p>
+          </form>
+
+          <div class="imagebot__gallery-wrap">
+            <div class="imagebot__gallery-head">
+              <h3 class="imagebot__gallery-title">생성된 이미지</h3>
+              <button type="button" class="imagebot__clear" id="imagebotClear" hidden>전체 삭제</button>
+            </div>
+            <div class="imagebot__gallery" id="imagebotGallery" aria-live="polite">
+              <p class="imagebot__empty" id="imagebotEmpty">아직 생성된 이미지가 없습니다.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- GPT 챗봇 -->
+      <div class="chatbot" id="chatbot">
+        <button
+          type="button"
+          class="chatbot__fab"
+          id="chatbotToggle"
+          aria-expanded="false"
+          aria-controls="chatbotPanel"
+          aria-label="챗봇 열기"
+        >
+          <svg class="chatbot__fab-icon chatbot__fab-icon--chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-4 3.5V6.5z" />
+          </svg>
+          <svg class="chatbot__fab-icon chatbot__fab-icon--close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+
+        <section
+          class="chatbot__panel"
+          id="chatbotPanel"
+          role="dialog"
+          aria-labelledby="chatbotTitle"
+          aria-hidden="true"
+          hidden
+        >
+          <header class="chatbot__header">
+            <div>
+              <h2 class="chatbot__title" id="chatbotTitle">VIBE Chat</h2>
+              <p class="chatbot__subtitle">포트폴리오에 대해 물어보세요</p>
+            </div>
+            <div class="chatbot__header-actions">
+              <button
+                type="button"
+                class="chatbot__icon-btn"
+                id="chatbotSettingsBtn"
+                aria-expanded="false"
+                aria-controls="chatbotSettings"
+                aria-label="설정 열기"
+                title="설정"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M12 3.5v2.2M12 18.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M3.5 12h2.2M18.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6" />
+                </svg>
+              </button>
+              <button type="button" class="chatbot__icon-btn" id="chatbotClose" aria-label="챗봇 닫기" title="닫기">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+              </button>
+            </div>
+          </header>
+
+          <div class="chatbot__settings" id="chatbotSettings" hidden>
+            <label class="chatbot__label" for="openaiApiKey">OpenAI API Key</label>
+            <div class="chatbot__key-row">
+              <input
+                type="password"
+                id="openaiApiKey"
+                class="chatbot__input"
+                placeholder="sk-..."
+                autocomplete="off"
+                spellcheck="false"
+              />
+              <button type="button" class="chatbot__key-save" id="chatbotSaveKey">저장</button>
+            </div>
+            <p class="chatbot__hint">키는 이 브라우저에만 저장됩니다. GitHub에 커밋하지 마세요.</p>
+          </div>
+
+          <div class="chatbot__messages" id="chatbotMessages" aria-live="polite"></div>
+
+          <form class="chatbot__form" id="chatbotForm">
+            <label class="visually-hidden" for="chatbotInput">메시지 입력</label>
+            <textarea
+              id="chatbotInput"
+              class="chatbot__textarea"
+              rows="2"
+              placeholder="예: 어떤 프로젝트를 만들었나요?"
+              maxlength="2000"
+            ></textarea>
+            <button type="submit" class="chatbot__send" id="chatbotSend">보내기</button>
+          </form>
+        </section>
+      </div>
+    </div>
+
+    <script src="./config.js"></script>
     <script src="./app.js"></script>
+    <script>
+      (() => {
+        const CHAT_URL = "https://api.openai.com/v1/chat/completions";
+        const IMAGE_URL = "https://api.openai.com/v1/images/generations";
+        const CHAT_MODEL = "gpt-4o-mini";
+        const IMAGE_MODEL = "gpt-image-2";
+        const API_KEY_STORAGE = "vibe-openai-api-key";
+
+        function normalizeKey(raw) {
+          return String(raw || "")
+            .trim()
+            .replace(/^["'\s]+|["'\s]+$/g, "")
+            .replace(/\s+/g, "");
+        }
+
+        const PRESET_API_KEY = normalizeKey(
+          window.VIBE_CONFIG && window.VIBE_CONFIG.openaiApiKey
+        );
+
+        let cachedApiKey = PRESET_API_KEY;
+
+        function getApiKey() {
+          return normalizeKey(
+            PRESET_API_KEY ||
+              cachedApiKey ||
+              document.getElementById("openaiApiKey")?.value ||
+              localStorage.getItem(API_KEY_STORAGE) ||
+              ""
+          );
+        }
+
+        function escapeHtml(text) {
+          return String(text)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#39;");
+        }
+
+        /* ---------- Chatbot ---------- */
+        const chat = {
+          root: document.getElementById("chatbot"),
+          toggle: document.getElementById("chatbotToggle"),
+          panel: document.getElementById("chatbotPanel"),
+          close: document.getElementById("chatbotClose"),
+          messages: document.getElementById("chatbotMessages"),
+          form: document.getElementById("chatbotForm"),
+          input: document.getElementById("chatbotInput"),
+          send: document.getElementById("chatbotSend"),
+          apiKey: document.getElementById("openaiApiKey"),
+          saveKey: document.getElementById("chatbotSaveKey"),
+          settings: document.getElementById("chatbotSettings"),
+          settingsBtn: document.getElementById("chatbotSettingsBtn"),
+        };
+
+        const SYSTEM_PROMPT = [
+          "당신은 VIBE Portfolio 사이트의 한국어 도우미입니다.",
+          "방문자가 포트폴리오, 프로젝트, 기술 스택, 연락 방법에 대해 물어보면 친절하고 간결하게 답하세요.",
+          "모르는 내용은 추측하지 말고, Contact 섹션으로 안내하세요.",
+          "답변은 2~5문장 정도로 짧게 유지하세요.",
+        ].join(" ");
+
+        /** @type {{ role: "user" | "assistant" | "system"; content: string }[]} */
+        const history = [{ role: "system", content: SYSTEM_PROMPT }];
+        let chatOpen = false;
+        let isSettingsOpen = false;
+
+        /* ---------- Image bot ---------- */
+        const img = {
+          root: document.getElementById("imagebot"),
+          toggle: document.getElementById("imagebotToggle"),
+          panel: document.getElementById("imagebotPanel"),
+          close: document.getElementById("imagebotClose"),
+          form: document.getElementById("imagebotForm"),
+          prompt: document.getElementById("imagebotPrompt"),
+          generate: document.getElementById("imagebotGenerate"),
+          status: document.getElementById("imagebotStatus"),
+          gallery: document.getElementById("imagebotGallery"),
+          empty: document.getElementById("imagebotEmpty"),
+          clear: document.getElementById("imagebotClear"),
+        };
+
+        let imageOpen = false;
+        let imageCount = 0;
+
+        function applyChatOpen(open, { focusToggle = true } = {}) {
+          const wasOpen = chatOpen;
+          chatOpen = Boolean(open);
+          if (!chat.root || !chat.panel) return;
+          chat.panel.hidden = !chatOpen;
+          chat.panel.setAttribute("aria-hidden", chatOpen ? "false" : "true");
+          chat.toggle.setAttribute("aria-expanded", chatOpen ? "true" : "false");
+          chat.toggle.setAttribute("aria-label", chatOpen ? "챗봇 닫기" : "챗봇 열기");
+          chat.root.classList.toggle("is-open", chatOpen);
+          if (chatOpen) {
+            window.requestAnimationFrame(() => chat.input?.focus());
+          } else if (wasOpen && focusToggle) {
+            chat.toggle.focus();
+          }
+        }
+
+        function applyImageOpen(open, { focusToggle = true } = {}) {
+          const wasOpen = imageOpen;
+          imageOpen = Boolean(open);
+          if (!img.root || !img.panel) return;
+          img.panel.hidden = !imageOpen;
+          img.panel.setAttribute("aria-hidden", imageOpen ? "false" : "true");
+          img.toggle.setAttribute("aria-expanded", imageOpen ? "true" : "false");
+          img.toggle.setAttribute("aria-label", imageOpen ? "이미지 생성 닫기" : "이미지 생성 열기");
+          img.root.classList.toggle("is-open", imageOpen);
+          if (imageOpen) {
+            window.requestAnimationFrame(() => img.prompt?.focus());
+          } else if (wasOpen && focusToggle) {
+            img.toggle.focus();
+          }
+        }
+
+        function setChatOpen(open) {
+          if (open) applyImageOpen(false, { focusToggle: false });
+          applyChatOpen(open);
+        }
+
+        function setImageOpen(open) {
+          if (open) applyChatOpen(false, { focusToggle: false });
+          applyImageOpen(open);
+        }
+
+        function setSettingsOpen(open) {
+          if (!chat.settings || !chat.settingsBtn) return;
+          if (PRESET_API_KEY) {
+            isSettingsOpen = false;
+            chat.settings.hidden = true;
+            chat.settingsBtn.hidden = true;
+            return;
+          }
+          isSettingsOpen = Boolean(open);
+          chat.settings.hidden = !isSettingsOpen;
+          chat.settingsBtn.setAttribute("aria-expanded", isSettingsOpen ? "true" : "false");
+          chat.settingsBtn.setAttribute("aria-label", isSettingsOpen ? "설정 닫기" : "설정 열기");
+          chat.settingsBtn.classList.toggle("is-active", isSettingsOpen);
+          if (isSettingsOpen) {
+            window.requestAnimationFrame(() => {
+              chat.apiKey.focus();
+              if (chat.apiKey.value) chat.apiKey.select();
+            });
+          }
+        }
+
+        function appendMessage(role, content) {
+          const bubble = document.createElement("div");
+          bubble.className = `chatbot__bubble chatbot__bubble--${role}`;
+          bubble.innerHTML = `<p>${escapeHtml(content).replaceAll("\n", "<br>")}</p>`;
+          chat.messages.appendChild(bubble);
+          chat.messages.scrollTop = chat.messages.scrollHeight;
+          return bubble;
+        }
+
+        function loadSavedKey() {
+          if (PRESET_API_KEY) {
+            cachedApiKey = PRESET_API_KEY;
+            if (chat.apiKey) chat.apiKey.value = PRESET_API_KEY;
+            setSettingsOpen(false);
+            return true;
+          }
+
+          const saved = normalizeKey(
+            localStorage.getItem(API_KEY_STORAGE) || sessionStorage.getItem(API_KEY_STORAGE) || ""
+          );
+          if (!saved) {
+            setSettingsOpen(false);
+            return false;
+          }
+          cachedApiKey = saved;
+          if (chat.apiKey) chat.apiKey.value = saved;
+          localStorage.setItem(API_KEY_STORAGE, saved);
+          setSettingsOpen(false);
+          return true;
+        }
+
+        function saveKey() {
+          const key = normalizeKey(chat.apiKey.value);
+          if (!key) {
+            cachedApiKey = "";
+            localStorage.removeItem(API_KEY_STORAGE);
+            sessionStorage.removeItem(API_KEY_STORAGE);
+            appendMessage("assistant", "API 키를 입력한 뒤 저장해 주세요.");
+            return;
+          }
+          if (!/^sk-[A-Za-z0-9_\-]+/.test(key)) {
+            appendMessage("assistant", "OpenAI API 키 형식을 확인해 주세요. 보통 sk- 로 시작합니다.");
+            return;
+          }
+          cachedApiKey = key;
+          chat.apiKey.value = key;
+          localStorage.setItem(API_KEY_STORAGE, key);
+          sessionStorage.setItem(API_KEY_STORAGE, key);
+          setSettingsOpen(false);
+          appendMessage("assistant", "API 키가 저장되었습니다. 챗봇과 이미지 생성에 공통으로 사용됩니다.");
+          chat.input.focus();
+        }
+
+        async function askGpt(userText) {
+          const apiKey = getApiKey();
+          if (!apiKey) {
+            setChatOpen(true);
+            setSettingsOpen(true);
+            throw new Error("설정에서 OpenAI API 키를 입력하고 저장해 주세요.");
+          }
+
+          history.push({ role: "user", content: userText });
+
+          const response = await fetch(CHAT_URL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${apiKey}`,
+            },
+            body: JSON.stringify({
+              model: CHAT_MODEL,
+              messages: history,
+              temperature: 0.6,
+              max_tokens: 500,
+            }),
+          });
+
+          const data = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            const detail =
+              data?.error?.message ||
+              `요청 실패 (${response.status}). API 키와 사용량 한도를 확인해 주세요.`;
+            history.pop();
+            throw new Error(detail);
+          }
+
+          const reply = data?.choices?.[0]?.message?.content?.trim();
+          if (!reply) {
+            history.pop();
+            throw new Error("모델 응답이 비어 있습니다. 잠시 후 다시 시도해 주세요.");
+          }
+
+          history.push({ role: "assistant", content: reply });
+          return reply;
+        }
+
+        function setImageStatus(text, isError) {
+          if (!img.status) return;
+          img.status.textContent = text || "";
+          img.status.classList.toggle("is-error", Boolean(isError));
+        }
+
+        function updateGalleryEmpty() {
+          if (!img.empty || !img.clear) return;
+          img.empty.hidden = imageCount > 0;
+          img.clear.hidden = imageCount === 0;
+        }
+
+        function dataUrlToBlob(dataUrl) {
+          const parts = String(dataUrl || "").split(",");
+          if (parts.length < 2) {
+            throw new Error("이미지 데이터 형식이 올바르지 않습니다.");
+          }
+          const header = parts[0];
+          const b64 = parts.slice(1).join(",");
+          const mime = header.match(/data:([^;]+)/)?.[1] || "image/png";
+          const binary = atob(b64);
+          const bytes = new Uint8Array(binary.length);
+          for (let i = 0; i < binary.length; i += 1) {
+            bytes[i] = binary.charCodeAt(i);
+          }
+          return new Blob([bytes], { type: mime });
+        }
+
+        async function downloadImage(source, filename) {
+          let objectUrl = "";
+          try {
+            let blob;
+            if (String(source).startsWith("data:")) {
+              blob = dataUrlToBlob(source);
+            } else {
+              const res = await fetch(source);
+              if (!res.ok) throw new Error("이미지를 가져오지 못했습니다.");
+              blob = await res.blob();
+            }
+
+            objectUrl = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = objectUrl;
+            link.download = filename || `vibe-image-${Date.now()}.png`;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+          } finally {
+            if (objectUrl) {
+              window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+            }
+          }
+        }
+
+        function addGalleryItem(dataUrl, promptText) {
+          if (img.empty) img.empty.hidden = true;
+
+          const figure = document.createElement("figure");
+          figure.className = "imagebot__item";
+
+          const media = document.createElement("div");
+          media.className = "imagebot__media";
+
+          const image = document.createElement("img");
+          image.src = dataUrl;
+          image.alt = promptText.slice(0, 120) || "생성된 이미지";
+          image.loading = "lazy";
+
+          const actions = document.createElement("div");
+          actions.className = "imagebot__item-actions";
+
+          const downloadBtn = document.createElement("button");
+          downloadBtn.type = "button";
+          downloadBtn.className = "imagebot__btn imagebot__btn--download";
+          downloadBtn.textContent = "다운로드";
+          downloadBtn.addEventListener("click", async (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            try {
+              downloadBtn.disabled = true;
+              downloadBtn.textContent = "저장 중…";
+              await downloadImage(dataUrl, `vibe-image-${Date.now()}.png`);
+              setImageStatus("이미지가 다운로드되었습니다.");
+            } catch (error) {
+              setImageStatus(
+                error instanceof Error ? error.message : "다운로드에 실패했습니다.",
+                true
+              );
+            } finally {
+              downloadBtn.disabled = false;
+              downloadBtn.textContent = "다운로드";
+            }
+          });
+
+          const remove = document.createElement("button");
+          remove.type = "button";
+          remove.className = "imagebot__btn imagebot__btn--remove";
+          remove.textContent = "삭제";
+          remove.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            figure.remove();
+            imageCount = Math.max(0, imageCount - 1);
+            updateGalleryEmpty();
+          });
+
+          actions.append(downloadBtn, remove);
+          media.append(image, actions);
+
+          const caption = document.createElement("figcaption");
+          caption.className = "imagebot__caption";
+          caption.textContent = promptText;
+
+          figure.append(media, caption);
+          img.gallery.prepend(figure);
+          imageCount += 1;
+          updateGalleryEmpty();
+          img.gallery.scrollTop = 0;
+        }
+
+        function formatApiError(rawMessage, status) {
+          const message = String(rawMessage || "").trim();
+          const lower = message.toLowerCase();
+
+          if (
+            lower.includes("safety system") ||
+            lower.includes("rejected by the safety") ||
+            lower.includes("content policy") ||
+            lower.includes("moderation")
+          ) {
+            return [
+              "OpenAI 안전 필터에 의해 요청이 거절되었습니다.",
+              "폭력·성인·혐오·실존 인물 관련 표현을 빼고,",
+              "풍경·제품·일러스트처럼 구체적인 장면으로 다시 적어 보세요.",
+              "예: 석양이 지는 고요한 산속 호수를 수채화 스타일로",
+            ].join(" ");
+          }
+
+          if (message) return message;
+          return `요청 실패 (${status || "unknown"}). API 키와 사용량 한도를 확인해 주세요.`;
+        }
+
+        async function generateImage(prompt) {
+          const apiKey = getApiKey();
+          if (!apiKey) {
+            setChatOpen(true);
+            setSettingsOpen(true);
+            throw new Error("챗봇 설정에서 OpenAI API 키를 저장한 뒤 다시 시도해 주세요.");
+          }
+
+          const response = await fetch(IMAGE_URL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${apiKey}`,
+            },
+            body: JSON.stringify({
+              model: IMAGE_MODEL,
+              prompt,
+              size: "1024x1024",
+              // 공식 옵션: auto보다 덜 엄격한 필터 (오탐 완화)
+              moderation: "low",
+              quality: "medium",
+            }),
+          });
+
+          const data = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            throw new Error(formatApiError(data?.error?.message, response.status));
+          }
+
+          const b64 = data?.data?.[0]?.b64_json;
+          const url = data?.data?.[0]?.url;
+
+          if (b64) {
+            return `data:image/png;base64,${b64}`;
+          }
+          if (url) {
+            return url;
+          }
+
+          throw new Error("이미지 데이터가 비어 있습니다. 잠시 후 다시 시도해 주세요.");
+        }
+
+        /* Chat events */
+        if (chat.root && chat.panel && chat.form) {
+          if (PRESET_API_KEY) {
+            chat.settingsBtn.hidden = true;
+            chat.settings.hidden = true;
+          }
+
+          chat.toggle.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            setChatOpen(!chatOpen);
+          });
+
+          chat.close.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            setChatOpen(false);
+          });
+
+          chat.settingsBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            setSettingsOpen(!isSettingsOpen);
+          });
+
+          chat.saveKey.addEventListener("click", saveKey);
+
+          chat.apiKey.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              saveKey();
+            }
+          });
+
+          chat.input.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" && !event.shiftKey) {
+              event.preventDefault();
+              chat.form.requestSubmit();
+            }
+          });
+
+          chat.form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const text = chat.input.value.trim();
+            if (!text || chat.send.disabled) return;
+
+            appendMessage("user", text);
+            chat.input.value = "";
+            chat.send.disabled = true;
+
+            const loading = appendMessage("assistant", "답변을 작성하는 중…");
+            loading.classList.add("is-loading");
+
+            try {
+              const reply = await askGpt(text);
+              loading.classList.remove("is-loading");
+              loading.querySelector("p").innerHTML = escapeHtml(reply).replaceAll("\n", "<br>");
+            } catch (error) {
+              loading.classList.remove("is-loading");
+              loading.querySelector("p").textContent =
+                error instanceof Error ? error.message : "알 수 없는 오류가 발생했습니다.";
+            } finally {
+              chat.send.disabled = false;
+              chat.input.focus();
+              chat.messages.scrollTop = chat.messages.scrollHeight;
+            }
+          });
+
+          setChatOpen(false);
+          setSettingsOpen(false);
+
+          const hasKey = loadSavedKey();
+          appendMessage(
+            "assistant",
+            hasKey
+              ? "안녕하세요. VIBE Portfolio 챗봇입니다. 무엇이든 물어보세요."
+              : "안녕하세요. VIBE Portfolio 챗봇입니다. 오른쪽 위 설정에서 API 키를 저장한 뒤 질문해 주세요."
+          );
+        }
+
+        /* Image events */
+        if (img.root && img.panel && img.form) {
+          img.toggle.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            setImageOpen(!imageOpen);
+          });
+
+          img.close.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            setImageOpen(false);
+          });
+
+          img.clear.addEventListener("click", () => {
+            img.gallery.querySelectorAll(".imagebot__item").forEach((el) => el.remove());
+            imageCount = 0;
+            updateGalleryEmpty();
+            setImageStatus("");
+          });
+
+          img.form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const prompt = img.prompt.value.trim();
+            if (!prompt || img.generate.disabled) return;
+
+            img.generate.disabled = true;
+            setImageStatus("이미지를 생성하는 중… 잠시만 기다려 주세요.");
+
+            try {
+              const dataUrl = await generateImage(prompt);
+              addGalleryItem(dataUrl, prompt);
+              setImageStatus("이미지가 생성되었습니다.");
+            } catch (error) {
+              setImageStatus(
+                error instanceof Error ? error.message : "알 수 없는 오류가 발생했습니다.",
+                true
+              );
+            } finally {
+              img.generate.disabled = false;
+              img.prompt.focus();
+            }
+          });
+
+          setImageOpen(false);
+          updateGalleryEmpty();
+        }
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key !== "Escape") return;
+          if (chatOpen) {
+            if (isSettingsOpen) {
+              setSettingsOpen(false);
+              return;
+            }
+            setChatOpen(false);
+            return;
+          }
+          if (imageOpen) {
+            setImageOpen(false);
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
